@@ -1,0 +1,98 @@
+<%- include('layouts/header.ejs') %>
+
+  <div class="profile-wrapper">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="user-box">
+        <h3>
+          <%= currUser.name %>
+        </h3>
+        <p>
+          <%= currUser.email %>
+        </p>
+      </div>
+
+      <ul>
+        <li><a href="/profile" class="active">👤 Profile</a></li>
+        <li><a href="/orders">📦 Orders</a></li>
+        <li><a href="/cart">🛒 Cart</a></li>
+        <li><a href="/logout">🚪 Logout</a></li>
+        <li><a href="/saved">❤️ Saved Cards</a></li>
+      </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="profile-main">
+
+      <!-- TOP CARD -->
+      <div class="top-card">
+        <div>
+          <h2>Welcome, <%= currUser.name %> 👋</h2>
+          <p>Manage your account and orders</p>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats">
+        <div class="stat-box">
+          <h3>
+            <%= currUser.orders.length %>
+          </h3>
+          <p>Orders</p>
+        </div>
+
+        <div class="stat-box">
+          <h3>
+            <%= currUser.cart.length %>
+          </h3>
+          <p>Cart Items</p>
+        </div>
+
+        <div class="stat-box">
+          <h3>Active</h3>
+          <p>Status</p>
+        </div>
+      </div>
+
+      <!-- PROFILE DETAILS -->
+      <div class="profile-card">
+        <h3>Account Details</h3>
+        <p><strong>Name:</strong>
+          <%= currUser.name %>
+        </p>
+        <p><strong>Email:</strong>
+          <%= currUser.email %>
+        </p>
+      </div>
+
+      <!-- RECENT ORDERS -->
+      <div class="profile-card">
+        <h3>Recent Orders</h3>
+        <% let orders=currUser.orders || []; %>
+
+          <% if(orders.length===0) { %>
+            <p>No orders yet</p>
+            <% } else { %>
+              <% orders.slice(-3).reverse().forEach(order=> { %>
+                <div class="order-box">
+                  <img src="<%= order.image %>" alt="">
+                  <div>
+                    <p><strong>
+                        <%= order.name %>
+                      </strong></p>
+                    <p>₹<%= order.price %>
+                    </p>
+                    <p>Status: <%= order.status %>
+                    </p>
+                  </div>
+                </div>
+                <% }) %>
+                  <% } %>
+      </div>
+
+    </div>
+
+  </div>
+
+  <%- include('layouts/footer.ejs') %>

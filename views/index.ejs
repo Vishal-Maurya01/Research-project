@@ -1,0 +1,106 @@
+<%- include('layouts/header.ejs') %>
+    <% const selectedCategory=req.query.category; %>
+        <div class="mobile-search">
+            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="search" name="item" id="search-box" placeholder="Search for items">
+            <div class="filter"><i class="fa-solid fa-sliders"></i></div>
+        </div>
+        <div class="main">
+            <div class="shop-page1">
+                <div class="category-section">
+                    <div class="category-box drag-scroll">
+                        <!-- ALL -->
+                        <a href="/shop" class="card-link">
+                            <div class="category">
+                                <p>All</p>
+                            </div>
+                        </a>
+                        <!-- Electronics -->
+                        <a href="/category/Electronics" class="card-link">
+                            <div class="category electronic">
+                                <p>Electronics</p>
+                            </div>
+                        </a>
+                        <!-- Fashion -->
+                        <a href="/category/Fashion" class="card-link">
+                            <div class="category fashion">
+                                <p>Fashion</p>
+                            </div>
+                        </a>
+                        <!-- Grocery -->
+                        <a href="/category/Grocery" class="card-link">
+                            <div class="category grocery">
+                                <p>Grocery</p>
+                            </div>
+                        </a>
+                        <!-- Beauty -->
+                        <a href="/category/Beauty" class="card-link">
+                            <div class="category beauty">
+                                <p>Beauty</p>
+                            </div>
+                        </a>
+                        <!-- Toy -->
+                        <a href="/category/Toy" class="card-link">
+                            <div class="category toy">
+                                <p>Toy</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="top-deal-slider">
+                    <div class="slider-track">
+                        <div class="deal deal-1">
+                            <img src="/images/smartphones.jpeg" alt="smartphones">
+                        </div>
+                        <div class="deal deal-2">
+                            <img src="/images/beauty_product.jpeg" alt="beauty">
+                        </div>
+                        <div class="deal deal-3">
+                            <img src="/images/toys.jpeg" alt="toys">
+                        </div>
+                        <div class="deal deal-4">
+                            <img src="/images/tvs.jpeg" alt="tvs">
+                        </div>
+                    </div>
+                </div>
+                <div class="trending_product">
+                    <h1>Trending Items</h1>
+                    <div class="top_product drag-scroll">
+                        <% trendingItems.forEach(item=> { %>
+                            <a href="/product/<%= item._id %>" class="card-link">
+                                <div class="top_product_item">
+                                    <img src="<%= item.image %>" alt="<%= item.name %>">
+                                    <h4>
+                                        <%= item.name %>
+                                    </h4>
+                                    <p class="price">₹<%= item.price %>
+                                    </p>
+                                </div>
+                            </a>
+                            <% }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="shop-page2">
+                <div class="all-product">
+                    <h2>All Products</h2>
+                    <div class="shopping-container">
+                        <% allItems.forEach(item=> { %>
+                            <div class="product-card">
+                                <a href="/product/<%= item._id %>">
+                                    <img src="<%= item.image %>" alt="<%= item.name %>">
+                                    <h4>
+                                        <%= item.name %>
+                                    </h4>
+                                    <p class="price">₹<%= item.price %>
+                                    </p>
+                                </a>
+                            </div>
+                            <% }) %>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <%- include('layouts/footer.ejs') %>

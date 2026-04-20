@@ -1,0 +1,15 @@
+<%- include('layouts/header.ejs') %>
+    <div class="error">
+        <div class="error-container">
+            <div class="error-code">
+                <%= statusCode %>
+            </div>
+
+            <div class="error-message">
+                <%= message %>
+            </div>
+
+            <a href="/" class="home-btn">Go Back Home</a>
+        </div>
+    </div>
+    <%- include('layouts/footer.ejs') %>

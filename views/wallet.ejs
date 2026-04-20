@@ -1,0 +1,45 @@
+<%- include('layouts/header.ejs') %>
+
+  <div class="wallet-container">
+
+    <h1>My Wallet 💰</h1>
+
+    <!-- BALANCE -->
+    <div class="wallet-card">
+      <h2>₹<%= wallet && wallet.balance ? wallet.balance : 0 %></h2>
+      <p>Available Balance</p>
+    </div>
+
+    <!-- ADD MONEY -->
+    <form action="/wallet/add" method="POST" class="wallet-form">
+      <input type="number" name="amount" placeholder="Enter amount" required>
+      <button>Add Money</button>
+    </form>
+
+    <!-- HISTORY -->
+    <div class="wallet-history">
+      <h3>Transaction History</h3>
+
+      <% if(wallet && wallet.history && wallet.history.length> 0) { %>
+
+        <% wallet.history.forEach(tx=> { %>
+          <div class="tx">
+            <p>
+              <%= tx.type %> ₹<%= tx.amount %>
+            </p>
+            <span>
+              <%= tx.date %>
+            </span>
+          </div>
+          <% }) %>
+
+            <% } else { %>
+
+              <p class="empty-history">No transactions yet</p>
+
+              <% } %>
+    </div>
+
+  </div>
+
+  <%- include('layouts/footer.ejs') %>

@@ -1,0 +1,28 @@
+<%- include('../layouts/header.ejs') %>
+
+    <h2 style="margin:20px;">Add Product</h2>
+
+    <form action="/admin/add" method="POST" style="margin:20px;">
+
+         <input type="text" oninput="preview.src=this.value">
+        <img id="preview" width="100">
+
+        <input name="name" placeholder="Product Name" required><br><br>
+
+        <input name="brand" placeholder="Brand"><br><br>
+
+        <input name="price" type="number" placeholder="Price" required><br><br>
+
+        <input name="stock" type="number" placeholder="Stock"><br><br>
+
+        <input name="category" placeholder="Category"><br><br>
+
+        <input name="image" placeholder="Image URL"><br><br>
+
+        <textarea name="description" placeholder="Description"></textarea><br><br>
+
+        <button class="add-btn" type="submit">Add Product</button>
+
+    </form>
+
+    <%- include('../layouts/footer.ejs') %>

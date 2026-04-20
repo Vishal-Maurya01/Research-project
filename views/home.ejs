@@ -1,0 +1,39 @@
+<%- include('layouts/header.ejs') %>
+    <div class="main">
+        <div class="page1">
+            <div class="description">
+                <h1>Shopify -</h1>
+                <h1>Smart Shopping</h1>
+                <h1>Made Easy.</h1>
+                <p>Discover quality products, secure payments, and fast checkout—all in one place.</p>
+                <a href="/shop">Start Shopping</a>
+             </div>
+             <% if(!currUser) { %>
+             <div class="login-page">
+                <div class="login-with-email">
+                    <h1>Login Here</h1>
+                    <form action="/login" method="POST">
+                        <input type="email" name="email" id="email-id" placeholder="Enter your email">
+                        <input type="password" name="password" id="password" placeholder="Enter your password">
+                        <button>Login</button>
+                    </form>
+                    <p>don't have account?</p>
+                    <p><a href="/signup">Sign up</a>&nbsp; &nbsp;here</p>
+                </div>
+                <div class="login-with-app">
+                    <div class="app-option">
+                        <p>Login with</p>
+                        <div class="app-link">
+                            <a href="#"><i class="fa-brands fa-google"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             <% } %>
+             
+        </div>
+    </div>
+
+<%- include('layouts/footer.ejs') %>

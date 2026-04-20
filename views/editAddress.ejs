@@ -1,0 +1,18 @@
+<%- include('layouts/header.ejs') %>
+
+<div class="address-container">
+
+  <h1>Edit Address ✏️</h1>
+
+  <form action="/address/edit/<%= index %>" method="POST" class="address-form">
+    <input type="text" name="name" value="<%= address.name %>" required>
+    <input type="text" name="phone" value="<%= address.phone %>" required>
+    <input type="text" name="city" value="<%= address.city %>" required>
+    <input type="text" name="pincode" value="<%= address.pincode %>" required>
+    <textarea name="address" required><%= address.address %></textarea>
+    <button type="submit">Update Address</button>
+  </form>
+
+</div>
+
+<%- include('layouts/footer.ejs') %>

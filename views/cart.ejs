@@ -1,0 +1,123 @@
+<%- include('layouts/header.ejs') %>
+
+  <div class="cart-container">
+
+    <h1>Your Cart</h1>
+
+    <% if(cart.length===0) { %>
+      <p class="empty">Your cart is empty 😢</p>
+      <% } else { %>
+
+        <div class="cart-grid">
+
+          <!-- LEFT SIDE (ITEMS) -->
+          <div class="cart-items">
+
+            <% let grandTotal=0; %>
+
+              <% cart.forEach((item, index)=> {
+                let total = item.price * item.quantity;
+                grandTotal += total;
+                %>
+
+                <div class="cart-card">
+
+                  <!-- IMAGE -->
+                  <div class="cart-img">
+                    <img src="<%= item.image %>" alt="">
+                  </div>
+
+                  <!-- DETAILS -->
+                  <div class="cart-info">
+                    <a href="/product/<%= item.productId %>" class="product-name">
+                      <%= item.name %>
+                    </a>
+
+                    <p class="price">₹<%= item.price %>
+                    </p>
+
+                    <!-- QUANTITY -->
+                    <div class="qty-box">
+                      <a href="/cart/decrease/<%= index %>">-</a>
+                      <span>
+                        <%= item.quantity %>
+                      </span>
+                      <a href="/cart/increase/<%= index %>">+</a>
+                    </div>
+
+                    <!-- REMOVE -->
+                    <form action="/cart/remove/<%= index %>" method="POST">
+                      <button class="remove-btn">Remove</button>
+                    </form>
+                  </div>
+
+                  <!-- TOTAL -->
+                  <div class="cart-total">
+                    ₹<%= total %>
+                  </div>
+                  <div>
+                    <a href="/save-for-later/<%= index %>" class="save-btn">
+                      ❤️ Save for later
+                    </a>
+                  </div>
+
+                </div>
+
+                <% }) %>
+
+          </div>
+
+          <!-- RIGHT SIDE (SUMMARY) -->
+          <div class="cart-summary">
+            <h2>Price Details</h2>
+
+            <p>Total Items: <%= cart.length %>
+            </p>
+            <h3>Grand Total: ₹<%= grandTotal %>
+            </h3>
+
+            <a href="/orders" class="checkout-btn">Proceed to Buy</a>
+          </div>
+
+        </div>
+
+        <% } %>
+
+  </div>
+
+  <hr>
+
+  <div class="saved-inside-cart">
+    <h2>Saved for Later ❤️</h2>
+
+    <% if(saved.length===0) { %>
+      <p>No saved items</p>
+      <% } else { %>
+
+        <% saved.forEach((item, index)=> { %>
+          <div class="saved-row">
+
+            <img src="<%= item.image %>" alt="">
+
+            <div>
+              <h4>
+                <%= item.name %>
+              </h4>
+              <p>₹<%= item.price %>
+              </p>
+
+              <a href="/move-to-cart/<%= index %>">Move to Cart</a>
+              <a href="/remove-saved/<%= index %>">Remove</a>
+            </div>
+
+          </div>
+          <% }) %>
+
+            <a href="/move-all-to-cart" class="move-all-btn">
+              Move All to Cart
+            </a>
+
+            <% } %>
+  </div>
+
+  <%- include('layouts/footer.ejs') %>

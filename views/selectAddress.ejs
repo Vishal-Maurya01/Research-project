@@ -1,0 +1,33 @@
+<%- include('layouts/header.ejs') %>
+
+<div class="address-container">
+  <h1>Select Delivery Address 📍</h1>
+
+  <% if(addresses.length === 0) { %>
+    <p>No address found. Please add address first.</p>
+    <a href="/address">Add Address</a>
+  <% } else { %>
+
+    <div class="address-grid">
+
+      <% addresses.forEach((a, index) => { %>
+
+        <div class="address-card">
+          <h3><%= a.name %></h3>
+          <p><%= a.address %></p>
+          <p><%= a.city %> - <%= a.pincode %></p>
+          <p>📞 <%= a.phone %></p>
+
+          <a href="/place-order/<%= product._id %>/<%= index %>" class="select-btn">
+            Deliver Here
+          </a>
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  <% } %>
+</div>
+
+<%- include('layouts/footer.ejs') %>

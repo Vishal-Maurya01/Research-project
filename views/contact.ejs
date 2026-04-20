@@ -1,0 +1,36 @@
+<%- include('layouts/header.ejs') %>
+
+<div class="contact-container">
+
+  <h1>Contact Us</h1>
+
+  <div class="contact-wrapper">
+
+    <!-- LEFT INFO -->
+    <div class="contact-info">
+      <h3>Get in Touch</h3>
+      <p>We’d love to hear from you. Feel free to contact us anytime.</p>
+
+      <p><strong>📍 Address:</strong> Varanasi, India</p>
+      <p><strong>📧 Email:</strong> support@quickbuy.com</p>
+      <p><strong>📞 Phone:</strong> +91 9876543210</p>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <form class="contact-form" action="/contact" method="POST">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+
+      <input type="email" name="email" placeholder="Your Email" required>
+
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<%- include('layouts/footer.ejs') %>

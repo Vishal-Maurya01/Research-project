@@ -1,0 +1,42 @@
+<%- include('../layouts/header.ejs') %>
+    <style>
+        form input,
+        textarea {
+            width: 300px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background: blue;
+            color: white;
+            border: none;
+        }
+    </style>
+
+    <h2 style="margin:20px;">Edit Product</h2>
+
+    <form action="/admin/edit/<%= product._id %>" method="POST" style="margin:20px;">
+
+        <input name="name" value="<%= product.name %>" required><br><br>
+
+        <input name="brand" value="<%= product.brand %>"><br><br>
+
+        <input name="price" type="number" value="<%= product.price %>" required><br><br>
+
+        <input name="stock" type="number" value="<%= product.stock %>"><br><br>
+
+        <input name="category" value="<%= product.category %>"><br><br>
+
+        <input name="image" value="<%= product.image %>" oninput="preview.src=this.value"><br><br>
+
+        <!-- Image Preview -->
+        <img id="preview" src="<%= product.image %>" width="120"><br><br>
+
+        <textarea name="description"><%= product.description %></textarea><br><br>
+
+        <button type="submit">Update Product</button>
+
+    </form>
+
+    <%- include('../layouts/footer.ejs') %>

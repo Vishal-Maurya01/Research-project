@@ -1,0 +1,38 @@
+<%- include('../layouts/header.ejs') %>
+
+    <h2 style="margin:20px;">Admin Dashboard</h2>
+
+    <a href="/admin/add" class="add-btn">➕ Add Product</a>
+
+    <table border="1" cellpadding="10" style="margin:20px;">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Action</th>
+            <th>Edit</th>
+        </tr>
+
+        <% allProducts.forEach(p=> { %>
+            <tr>
+                <td>
+                    <%= p.name %>
+                </td>
+                <td>₹<%= p.price %>
+                </td>
+                <td>
+                    <%= p.category %>
+                </td>
+                <td>
+                    <a href="/admin/delete/<%= p._id %>">❌ Delete</a>
+                </td>
+                <td>
+                    <a href="/admin/edit/<%= p._id %>">✏️ Edit</a> |
+                    <a href="/admin/delete/<%= p._id %>">❌ Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+
+    </table>
+
+    <%- include('../layouts/footer.ejs') %>

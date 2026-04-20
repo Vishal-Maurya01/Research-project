@@ -1,0 +1,28 @@
+<%- include('layouts/header.ejs') %>
+
+<h2 style="margin:20px;">
+  Search Results for "<%= query %>"
+</h2>
+
+<div class="shopping-container">
+
+  <% if(results.length === 0){ %>
+    <p style="margin:20px;">No products found</p>
+  <% } %>
+
+  <% results.forEach(item => { %>
+
+    <div class="product-card">
+
+      <a href="/product/<%= item._id %>">
+        <img src="<%= item.image %>" alt="">
+        <h4><%= item.name %></h4>
+        <p class="price">₹<%= item.price %></p>
+      </a>
+    </div>
+
+  <% }) %>
+
+</div>
+
+<%- include('layouts/footer.ejs') %>

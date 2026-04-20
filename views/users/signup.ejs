@@ -1,0 +1,35 @@
+<%- include('../layouts/header.ejs') %>
+    <div class="signup-main">
+        <div class="signup-wrapper">
+            <div class="signup-card">
+                <h2>Create Account</h2>
+                <form action="/signup" method="POST">
+                    <div class="input-box">
+                        <input type="text" name="name" id="name" required>
+                        <label for="name">Full Name</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="input-box password-box">
+                        <input type="password" name="password" id="password" required>
+                        <label for="password">Password</label>
+                        <span class="toggle-password" onclick="togglePassword()">👁</span>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" name="confirmPassword" required>
+                        <label>Confirm Password</label>
+                    </div>
+                    <button type="submit" class="signup-btn">
+                        Sign Up
+                    </button>
+                    <p class="login-text">
+                        Already have an account?
+                        <a href="/login">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('../layouts/footer.ejs') %>

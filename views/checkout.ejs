@@ -1,0 +1,67 @@
+<%- include('layouts/header.ejs') %>
+
+    <div class="checkout-container">
+
+        <h1>Checkout</h1>
+
+        <!-- PRODUCT -->
+        <div class="checkout-product">
+            <img src="<%= product.image %>">
+            <div>
+                <h3>
+                    <%= product.name %>
+                </h3>
+                <p>₹<%= product.price %>
+                </p>
+            </div>
+        </div>
+
+        <!-- ADDRESS -->
+        <h2>Select Address</h2>
+        <% addresses.forEach((a, i)=> { %>
+            <div class="address-box">
+                <input type="radio" name="address" value="<%= i %>" <%=i===0 ? 'checked' : '' %>>
+                <p>
+                    <%= a.name %>, <%= a.address %>, <%= a.city %>, <%= a.pincode %>
+                </p>
+            </div>
+            <% }) %>
+
+                <!-- PAYMENT -->
+                <h2>Payment Method</h2>
+
+                <div class="payment-box">
+                    <input type="radio" name="payment" checked> Wallet (₹<%= wallet.balance %>)
+                </div>
+
+                <% cards.forEach(c=> { %>
+                    <div class="payment-box">
+                        <input type="radio" name="payment">
+                        Card ending **** <%= c.cardNumber.slice(-4) %>
+                    </div>
+                    <% }) %>
+                        <!-- PLACE ORDER -->
+                        <button onclick="placeOrder()" class="place-order-btn">
+                            Place Order
+                        </button>
+                        
+                    </div>
+        
+                    <script>
+                        function placeOrder() {
+                            // Get selected address index
+                            const selected = document.querySelector('input[name="address"]:checked');
+
+                            if (!selected) {
+                                alert("Please select address");
+                                return;
+                            }
+
+                            const index = selected.value;
+
+                            // Redirect with correct index
+                            window.location.href = "/place-order/<%= product._id %>/" + index;
+                        }
+                    </script>
+
+    <%- include('layouts/footer.ejs') %>

@@ -1,0 +1,42 @@
+<%- include('layouts/header.ejs') %>
+
+    <h2 style="margin:20px;">My Orders</h2>
+
+    <% if (orders.length===0) { %>
+        <p style="margin:20px;">No orders yet</p>
+        <% } %>
+
+            <div class="orders-container">
+                <% orders.forEach((order, index)=> { %>
+                    <div class="order-card">
+                        <img src="<%= order.image %>" alt="">
+
+                        <div>
+                            <h4>
+                                <%= order.name %>
+                            </h4>
+                            <p>₹<%= order.price %>
+                            </p>
+                            <p>📦 Delivery by: <%= order.date %>
+                            </p>
+                            <p>🚚 Status: <%= order.status %>
+                            </p>
+                            <!-- Cancel button -->
+                            <% if(order.status !=="Cancelled" && order.status !=="Delivered" ){ %>
+                                <a href="/cancel-order/<%= index %>" class="cancel-btn">❌ Cancel</a>
+                                <% } %>
+
+                        </div>
+                        <p><strong>Delivery Address:</strong></p>
+                        <p>
+                            <%= order.address.name %> <br>
+                                <%= order.address.address %> <br>
+                                    <%= order.address.city %> - <%= order.address.pincode %> <br>
+                                            📞 <%= order.address.phone %>
+                        </p>
+                    </div>
+
+                    <% }) %>
+            </div>
+
+            <%- include('layouts/footer.ejs') %>

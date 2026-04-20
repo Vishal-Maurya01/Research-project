@@ -1,0 +1,35 @@
+<%- include('layouts/header.ejs') %>
+
+<div class="saved-container">
+  <h1>Your Wishlist ❤️</h1>
+
+  <% if(saved.length === 0) { %>
+    <p>No items in wishlist</p>
+  <% } else { %>
+
+    <div class="saved-grid">
+      <% saved.forEach((item, index) => { %>
+
+        <div class="saved-card">
+
+          <a href="/product/<%= item.productId %>">
+            <img src="<%= item.image %>" alt="">
+          </a>
+
+          <h3><%= item.name %></h3>
+          <p>₹<%= item.price %></p>
+
+          <div class="saved-actions">
+            <a href="/move-to-cart/<%= index %>">Move to Cart</a>
+            <a href="/remove-saved/<%= index %>">Remove</a>
+          </div>
+
+        </div>
+
+      <% }) %>
+    </div>
+
+  <% } %>
+</div>
+
+<%- include('layouts/footer.ejs') %>

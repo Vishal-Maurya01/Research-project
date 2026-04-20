@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Shopify</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' href='/css/style.css'>
+    <link rel='stylesheet' href='/css/shopping.css'>
+    <link rel='stylesheet' href='/css/authentication.css'>
+    <link rel='stylesheet' href='/css/footer.css'>
+    <link rel='stylesheet' href='/css/show.css'>
+    <link rel='stylesheet' href='/css/admin.css'>
+    <link rel='stylesheet' href='/css/cart.css'>
+    <link rel='stylesheet' href='/css/about.css'>
+    <link rel='stylesheet' href='/css/service.css'>
+    <link rel='stylesheet' href='/css/profile.css'>
+    <link rel='stylesheet' href='/css/savedwallet.css'>
+    <link rel='stylesheet' href='/css/address.css'>
+    <link rel='stylesheet' href='/css/checkout.css'>
+
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <nav>
+        <i class="fa-solid fa-bars nav-menu"></i>
+        <div class="logo">
+            <h1><b>S</b></h1>
+            <h4><b>Shopify</b></h4>
+        </div>
+        <div class="delivery-address">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="current-address">
+                <p>Delivering to Varanasi 221010</p>
+            </div>
+        </div>
+        <form action="/search" method="GET" class="search">
+            <input type="search" name="q" id="search-box" placeholder="Search for items..." required>
+            <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <!-- <div class="search">
+            <input type="search" name="item" id="search-box" placeholder="Search for items">
+            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div> -->
+        <div class="cart-icon">
+            <a href="/cart">
+                <i class="fa-solid fa-cart-arrow-down"></i>
+                <h4>Cart</h4>
+            </a>
+        </div>
+        <div class="authentication">
+            <i class="fa-solid fa-circle-user"></i>
+            <% if(!currUser){ %>
+                <a href="/login" class="login">Log in</a>
+                <% } %>
+                    <i class="fa-solid fa-angle-down arrow"></i>
+                    <div class="account-dropdown">
+                        <% if(currUser){ %>
+                            <div class="when-login">
+                                <h1>Your Account</h1>
+                            </div>
+                            <% } %>
+                                <% if(!currUser){ %>
+                                    <div class="when-not-login">
+                                        <p>New customer?</p>
+                                        <a href="/signup">Sign Up</a>
+                                    </div>
+                                    <% } %>
+                                        <a href="/profile" class="flexbox-account">
+                                            <i class="fa-solid fa-circle-user"></i>
+                                            <p>My Profile</p>
+                                        </a>
+                                        <a href="/orders" class="flexbox-account">
+                                            <i class="fa-solid fa-cube"></i>
+                                            <p>Orders</p>
+                                        </a>
+                                        <a href="/coupons" class="flexbox-account">
+                                            <i class="fa-solid fa-ticket"></i>
+                                            <p>Coupons</p>
+                                        </a>
+                                            <a href="/admin" class="flexbox-account">
+                                                <i class="fa-solid fa-user-tie"></i>
+                                                <p>Admin Panel</p>
+                                            </a>
+                                                <a href="/wallet" class="flexbox-account">
+                                                    <i class="fa-solid fa-wallet"></i>
+                                                    <p>Saved Cards & Wallet</p>
+                                                </a>
+                                                <a href="/address" class="flexbox-account">
+                                                    <i class="fa-solid fa-location-dot"></i>
+                                                    <p>Saved Address</p>
+                                                </a>
+                                                <a href="/wishlist" class="flexbox-account">
+                                                    <i class="fa-solid fa-heart"></i>
+                                                    <p>Wishlist</p>
+                                                </a>
+                                                <a href="/notification" class="flexbox-account">
+                                                    <i class="fa-solid fa-bell"></i>
+                                                    <p>Notification</p>
+                                                </a>
+                    </div>
+        </div>
+    </nav>
+
+    <% if(success.length> 0) { %>
+        <div class="flash-container success">
+            <button class="close-btn" onclick="this.parentElement.style.display='none'">×</button>
+            <p>
+                <%= success %>
+            </p>
+            <button class="ok-btn" onclick="this.parentElement.style.display='none'">OK</button>
+        </div>
+        <% } %>
+
+            <% if(error.length> 0) { %>
+                <div class="flash-container error">
+                    <button class="close-btn" onclick="this.parentElement.style.display='none'">×</button>
+                    <p>
+                        <%= error %>
+                    </p>
+                    <button class="ok-btn" onclick="this.parentElement.style.display='none'">OK</button>
+                </div>
+                <% } %>
+
+                    <div class="sidebar-background">
+                        <div class="menu-option">
+                            <div class="profile">
+                                <% if(!currUser) { %>
+                                    <div class="not-sign">
+                                        <i class="fa-solid fa-circle-user"></i>
+                                        <h2>Hello, Sign in</h2>
+                                    </div>
+                                    <% } %>
+                                        <% if(currUser) { %>
+                                            <div class="sign">
+                                                <i class="fa-solid fa-circle-user"></i>
+                                                <h2>Hello Vishal</h2>
+                                            </div>
+                                            <% } %>
+                            </div>
+                            <div class="trending-shop">
+                                <h3>Trending</h3>
+                                <a href="">Top Product</a>
+                                <a href="">New Releases</a>
+                                <a href="">Sports</a>
+                            </div>
+                            <div class="shop-category">
+                                <h3>Shop by Category</h3>
+                                <a href="">Mobiles & Computers</a>
+                                <a href="">Electronics</a>
+                                <a href="">Men's Fashion</a>
+                                <a href="">Women's Fashion</a>
+                                <a href="">Home, Kitchen, Pets</a>
+                                <a href="">Grocery</a>
+                            </div>
+                            <div class="help-setting">
+                                <h3>Help & Settings</h3>
+                                <a href="/profile">Your account</a>
+                                <a href="">Customer service</a>
+                                <% if(!currUser) { %>
+                                    <a href="/login">Sign in</a>
+                                    <% } %>
+                                        <% if(currUser) { %>
+                                            <a href="/logout">Logout</a>
+                                            <% } %>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-square-xmark cross"></i>
+                    </div>
+                    <div class="items-option">
+                        <i class="fa-solid fa-bars menu"></i>
+                        <div class="title-top">
+                            <p>Shopify</p>
+                            <h1>S</h1>
+                        </div>
+                        <a href="/">Home</a>
+                        <a href="/shop">Shopping</a>
+                        <a href="/about">About</a>
+                        <a href="/service">Service</a>
+                        <a href="/contact">Contact</a>
+                    </div>

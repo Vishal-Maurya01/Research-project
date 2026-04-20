@@ -1,0 +1,182 @@
+/* ===== PRODUCT PAGE ===== */
+
+.product-detail {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+}
+
+/* IMAGE */
+.product-image img {
+  width: 350px;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* DETAILS */
+.product-info {
+  max-width: 500px;
+}
+
+.price {
+  color: green;
+}
+
+/* BUTTON GROUP */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.add-cart, .buy-btn {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.add-cart {
+  background: black;
+}
+
+.buy-btn {
+  background: orange;
+}
+
+/* QUANTITY */
+.quantity-box {
+  margin-top: 10px;
+}
+
+.quantity-box button {
+  padding: 5px 10px;
+}
+
+.quantity-box input {
+  width: 40px;
+  text-align: center;
+}
+
+/* REVIEW */
+textarea {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+  .product-detail {
+    flex-direction: column;   /* stack vertically */
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-image img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .product-info {
+    max-width: 100%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .add-cart, .buy-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .quantity-box {
+    justify-content: center;
+  }
+
+}
+.related-products {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.related-card img {
+  width: 150px;
+}
+
+.review-box {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+textarea {
+  width: 300px;
+  height: 80px;
+}
+
+button {
+  padding: 8px 15px;
+}
+
+.show-review{
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1vw;
+    overflow-y: hidden;
+}
+
+.buy-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: orange;
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.orders-container {
+  padding: 20px;
+}
+
+.order-card {
+  display: flex;
+  gap: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.order-card img {
+  width: 100px;
+}
+
+.cancel-btn {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 5px 10px;
+  background: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.wishlist-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px;
+  background: pink;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+}
