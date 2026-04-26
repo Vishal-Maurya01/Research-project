@@ -85,30 +85,22 @@
                                             <i class="fa-solid fa-cube"></i>
                                             <p>Orders</p>
                                         </a>
-                                        <a href="/coupons" class="flexbox-account">
-                                            <i class="fa-solid fa-ticket"></i>
-                                            <p>Coupons</p>
+                                        <a href="/admin" class="flexbox-account">
+                                            <i class="fa-solid fa-user-tie"></i>
+                                            <p>Admin Panel</p>
                                         </a>
-                                            <a href="/admin" class="flexbox-account">
-                                                <i class="fa-solid fa-user-tie"></i>
-                                                <p>Admin Panel</p>
-                                            </a>
-                                                <a href="/wallet" class="flexbox-account">
-                                                    <i class="fa-solid fa-wallet"></i>
-                                                    <p>Saved Cards & Wallet</p>
-                                                </a>
-                                                <a href="/address" class="flexbox-account">
-                                                    <i class="fa-solid fa-location-dot"></i>
-                                                    <p>Saved Address</p>
-                                                </a>
-                                                <a href="/wishlist" class="flexbox-account">
-                                                    <i class="fa-solid fa-heart"></i>
-                                                    <p>Wishlist</p>
-                                                </a>
-                                                <a href="/notification" class="flexbox-account">
-                                                    <i class="fa-solid fa-bell"></i>
-                                                    <p>Notification</p>
-                                                </a>
+                                        <a href="/wallet" class="flexbox-account">
+                                            <i class="fa-solid fa-wallet"></i>
+                                            <p>Saved Cards & Wallet</p>
+                                        </a>
+                                        <a href="/address" class="flexbox-account">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            <p>Saved Address</p>
+                                        </a>
+                                        <a href="/wishlist" class="flexbox-account">
+                                            <i class="fa-solid fa-heart"></i>
+                                            <p>Wishlist</p>
+                                        </a>
                     </div>
         </div>
     </nav>
@@ -151,23 +143,22 @@
                             </div>
                             <div class="trending-shop">
                                 <h3>Trending</h3>
-                                <a href="">Top Product</a>
-                                <a href="">New Releases</a>
-                                <a href="">Sports</a>
+                                <a href="/shop">Top Product</a>
+                                <a class="category fashion" href="/category/Fashion">New Releases</a>
+                                <a class="category Sports" href="/category/Sports">Sports</a>
                             </div>
                             <div class="shop-category">
                                 <h3>Shop by Category</h3>
-                                <a href="">Mobiles & Computers</a>
-                                <a href="">Electronics</a>
-                                <a href="">Men's Fashion</a>
-                                <a href="">Women's Fashion</a>
-                                <a href="">Home, Kitchen, Pets</a>
-                                <a href="">Grocery</a>
+                                <a class="category electronic" href="/category/Electronics">Mobiles & Computers</a>
+                                <a class="category electronic" href="/category/Electronics">Electronics</a>
+                                <a class="category fashion" href="/category/Fashion">Fashion</a>
+                                <a class="category grocery" href="/category/Grocery">Grocery</a>
+                                <a class="category jewellery" href="/category/Jewellery">Jewellery</a>
                             </div>
                             <div class="help-setting">
                                 <h3>Help & Settings</h3>
                                 <a href="/profile">Your account</a>
-                                <a href="">Customer service</a>
+                                <a href="/contact">Customer service</a>
                                 <% if(!currUser) { %>
                                     <a href="/login">Sign in</a>
                                     <% } %>
