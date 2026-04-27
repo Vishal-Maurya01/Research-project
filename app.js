@@ -25,7 +25,7 @@ app.engine("ejs", ejsMate);
 const sessionOptions = {
     secret: "mysupersecretcode",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge: 7 * 24 * 60 * 60 * 1000,
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
     next();
 });
 
-const MONGO_URL = 'mongodb://127.0.0.1:27017/quickbuy';
+const MONGO_URL ='mongodb+srv://username:password@cluster0.xxxx.mongodb.net/quickbuy';
 
 main().then(() => {
     console.log("Connected to DB")
@@ -819,6 +819,12 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", { statusCode, message });
 })
 
-app.listen(8080, '0.0.0.0', () => {
-    console.log(`app is listening on port 8080`);
-})
+// app.listen(8080, '0.0.0.0', () => {
+//     console.log(`app is listening on port 8080`);
+// })
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
