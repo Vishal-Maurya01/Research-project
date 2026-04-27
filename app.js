@@ -53,7 +53,7 @@ app.use((req, res, next) => {
     next();
 });
 
-const MONGO_URL ='mongodb+srv://mauryavanshyvishalmaurya_db_user:Vishalmaurya@1234@cluster0.xxxx.mongodb.net/quickbuy';
+const MONGO_URL ='mongodb+srv://mauryavanshyvishalmaurya_db_user:Vishalmaurya1234@cluster0.hnrqjfv.mongodb.net/quickbuy?retryWrites=true&w=majority';
 
 main().then(() => {
     console.log("Connected to DB")

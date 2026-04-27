@@ -3,22 +3,26 @@ const Schema = mongoose.Schema;
 const initData = require('./data');
 const Items = require("../models/items.js");
 
-const MONGO_URL = 'mongodb://127.0.0.1:27017/quickbuy';
+// const MONGO_URL = 'mongodb://127.0.0.1:27017/quickbuy';
 
-main().then(() => {
-    console.log("Connected to DB")
-}).catch((err) => {
-    console.log(err);
-})
+const MONGO_URL = 'mongodb+srv://mauryavanshyvishalmaurya_db_user:Vishalmaurya1234@cluster0.hnrqjfv.mongodb.net/quickbuy';
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    try {
+        await mongoose.connect(MONGO_URL);
+        console.log("✅ Connected to DB");
+
+        await initDb();   // 👈 CALL AFTER CONNECTION
+
+    } catch (err) {
+        console.log(err);
+    }
 }
 
-const initDb = async ()=>{
+const initDb = async () => {
     await Items.deleteMany({});
     await Items.insertMany(initData.data);
-    console.log("data was initialised");
-}
+    console.log("✅ Data was initialised");
+};
 
-initDb();
+main();
