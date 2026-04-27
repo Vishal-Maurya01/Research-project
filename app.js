@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require('path');
@@ -23,13 +24,14 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.engine("ejs", ejsMate);
 
 const sessionOptions = {
-    secret: "mysupersecretcode",
+    secret: process.env.SESSION_SECRET || "mysupersecretcode",
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // only https
+        sameSite: "lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
     },
 };
 
@@ -53,7 +55,7 @@ app.use((req, res, next) => {
     next();
 });
 
-const MONGO_URL ='mongodb+srv://mauryavanshyvishalmaurya_db_user:Vishalmaurya1234@cluster0.hnrqjfv.mongodb.net/quickbuy?retryWrites=true&w=majority';
+const MONGO_URL =process.env.MONGO_URI;
 
 main().then(() => {
     console.log("Connected to DB")
