@@ -53,7 +53,7 @@ app.use((req, res, next) => {
     next();
 });
 
-const MONGO_URL ='mongodb+srv://username:password@cluster0.xxxx.mongodb.net/quickbuy';
+const MONGO_URL ="mongodb+srv://mauryavanshyvishalmaurya_db_user:Vishalmaurya@1234@cluster0.hnrqjfv.mongodb.net/?appName=Cluster0";
 
 main().then(() => {
     console.log("Connected to DB")
